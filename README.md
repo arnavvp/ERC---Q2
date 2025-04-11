@@ -81,9 +81,12 @@ demodulated = np.abs(analytic_signal)
 
 lowcut = 100.0
 
-Recognised audio - Andrew Garfield hehehe meme (Scan my poster's QR code)
+
 highcut = 2000.0
 sos = cheby1(N=6, rp=1,Wn=[lowcut, highcut],btype='bandpass',fs=sample_rate,output='sos')
 
 And then the final normalization:
 filtered /= np.max(np.abs(filtered))
+
+
+Recognised audio - Andrew Garfield hehehe meme (Scan my poster's QR code)
