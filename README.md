@@ -1,8 +1,14 @@
 # ERC---Q2
 
-Step 1: Using 
+I have used python: SciPy + NumPy + MatPlotLib
 
-Graph 1
+from scipy.io import wavfile
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import hilbert, cheby1, sosfilt
+from scipy.fft import fft
+
+Step 1: Using FFT
 
 Dominant Frequencies:  [
   9412.54069615  9413.04447161  9413.54824707   9414.05202253   
@@ -64,5 +70,18 @@ Dominant Frequencies:  [
 So basically there are 2 peaks, one near 9500 Hz, and the other near 10500 Hz, so the
  Fc = 10000 Hz
 
- 
+ Now I normalized the audio file to [-1,1]
 
+ Demodulation: I used the hilbert filter for amplitude demodulation
+
+analytic_signal = hilbert(data)
+demodulated = np.abs(analytic_signal)
+
+ Noise Filtering: I did the Bandpass Filtering with a Chebyshev Type I Filter
+
+lowcut = 100.0
+highcut = 2000.0
+sos = cheby1(N=6, rp=1,Wn=[lowcut, highcut],btype='bandpass',fs=sample_rate,output='sos')
+
+And then the final normalization:
+filtered /= np.max(np.abs(filtered))
