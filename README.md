@@ -80,6 +80,8 @@ demodulated = np.abs(analytic_signal)
  Noise Filtering: I did the Bandpass Filtering with a Chebyshev Type I Filter
 
 lowcut = 100.0
+
+Recognised audio - Andrew Garfield hehehe meme (Scan my poster's QR code)
 highcut = 2000.0
 sos = cheby1(N=6, rp=1,Wn=[lowcut, highcut],btype='bandpass',fs=sample_rate,output='sos')
 
